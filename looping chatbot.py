@@ -12,15 +12,21 @@ def add_assistant_message(messages, text):
     assistant_message = {"role": "assistant", "content": text}
     messages.append(assistant_message)
 
-def chat(client,messages):
-    message = client.messages.create(
-        model=model,
-        max_tokens=1000,
-        messages=messages,
-    )
+def chat(client,messages, system = None):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+    }
+    
+    if system:
+        params["system"] = system
+    
+    message = client.messages.create(**params)
     return "".join(block.text for block in message.content if block.type == "text")
 
 if __name__ == "__main__":
+    continue_conversation = True
     load_dotenv()
     client = Anthropic()
     model = "claude-sonnet-5-5"
@@ -29,9 +35,15 @@ if __name__ == "__main__":
     messages = []
     
     user_input = input(">: ")
-    
-    while True:
-        print(">", user_input)
+    system_prompt = """
+        You are a patient math tutor.
+        Do not directly answer a student's questions.
+        Guide them to a solution step by step.
+        
+        If the user has the intention to left the conversation does not ask for that, politely acknowledge it and you MUST add the phrase 'Good Bye' in the reply. 
+        """
+
+    while continue_conversation:
         add_user_message(messages, user_input)        
         answer = chat(client, messages)
         add_assistant_message(messages, answer)
@@ -39,6 +51,8 @@ if __name__ == "__main__":
         print("Assistant:", answer)
         print("---")
         user_input = input(">: ")
+        if "Good Bye" in user_input:
+            continue_conversation = False
     
     # Add the initial user question
     add_user_message(messages, "Define quantum computing in one sentence")
