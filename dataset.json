@@ -1,50 +1,51 @@
 [
   {
     "prompt_inputs": {
-      "content": "The Enlightenment's emphasis on reason and individual liberty fundamentally reshaped Western political philosophy, challenging medieval hierarchies and establishing the intellectual foundations for modern democracy. Philosophers like Kant and Rousseau grappled with questions of human nature and the social contract, arguing that legitimate authority derives from the consent of the governed rather than divine right. These ideas became catalysts for revolutionary movements across Europe and the Americas, inspiring both constitutional reforms and radical social upheaval. Simultaneously, the period witnessed a reassessment of aesthetic theory, as thinkers moved beyond rigid classicism toward recognizing the validity of subjective emotional experience and artistic expression, laying groundwork for Romanticism's emergence."
+      "content": "Dopaminergic signaling in the prefrontal cortex plays a critical role in executive function and working memory, processes essential for cognitive control and decision-making. Recent functional magnetic resonance imaging (fMRI) studies have demonstrated that dysregulation of dopamine D1 receptor expression correlates with impaired cognitive flexibility in patients with schizophrenia. Furthermore, positron emission tomography (PET) imaging revealed altered glucose metabolism in the anterior cingulate cortex, suggesting mitochondrial dysfunction and oxidative stress as potential mechanisms underlying the observed neurotransmitter imbalance. These neurochemical aberrations, examined through electrophysiological recordings and microdialysis techniques, highlight the interconnected pathways between monoamine systems and higher-order cognitive processes."
     },
     "solution_criteria": [
-      "Extracts all major humanities topics without omissions (e.g., Enlightenment, political philosophy, democracy, social contract, authority, revolution, aesthetic theory)",
-      "Returns output as a valid JSON array of strings",
-      "Captures both explicit and implicit concepts relevant to the text"
+      "Extracts all technical domain-specific neuroscience terms and neuroimaging methodologies mentioned (e.g., dopaminergic signaling, fMRI, PET imaging, dopamine D1 receptor, prefrontal cortex, schizophrenia)",
+      "Returns output as a JSON array of strings with no additional fields or explanations",
+      "Identifies interdisciplinary topics spanning neurotransmitters, brain anatomy, cognitive functions, and imaging techniques"
     ],
     "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
-    "scenario": "Testing with a humanities article containing abstract concepts like philosophy, ethics, and historical movements to verify extraction of non-technical topics"
+    "scenario": "Testing with a dense neuroscience abstract containing interdisciplinary topics (neurotransmitters, cognitive function, neuroimaging) to verify extraction of technical domain-specific terms"
   },
   {
     "prompt_inputs": {
-      "content": "This study investigates the photocatalytic degradation of persistent organic pollutants using titanium dioxide nanoparticles synthesized via sol-gel methods. UV-Vis spectroscopy revealed maximum absorption at 385 nm, while X-ray diffraction confirmed the anatase crystal phase with a bandgap energy of 3.2 eV. The mechanism involves hydroxyl radical generation through electron-hole pair formation at the semiconductor-electrolyte interface. Under optimized conditions with pH 6.5 and 500 W halogen lamp irradiation, 87% degradation of bisphenol A was achieved within 90 minutes, with kinetics following pseudo-first-order rate equations. Comparative analysis with commercial P25 catalyst demonstrated superior performance attributed to increased surface area (185 m\u00b2/g) and reduced recombination rates via heterostructure coupling with reduced graphene oxide."
+      "content": "The Enlightenment fundamentally reshaped European intellectual discourse through the convergence of rationalism, empiricism, and humanism. Philosophers such as Voltaire and Diderot challenged ecclesiastical authority and promoted religious tolerance, while simultaneously advancing the ideals of individual liberty and democratic governance. This period witnessed the emergence of the public sphere as a distinct social space where salons and coffeehouses became crucibles for the exchange of ideas. The movement's emphasis on reason and progress catalyzed broader cultural transformations, influencing artistic movements like neoclassicism and Romantic poetry, while establishing the philosophical foundations for revolutionary political upheaval that would reshape the Atlantic world throughout the late eighteenth century."
     },
     "solution_criteria": [
-      "Extracts all major scientific topics and techniques mentioned (e.g., photocatalysis, titanium dioxide, characterization methods, pollutant degradation)",
-      "Identifies specific chemical/material nomenclature as distinct topics (e.g., bisphenol A, anatase, graphene oxide)",
-      "Returns results as a valid JSON array of strings with no additional fields or metadata"
+      "Identifies major philosophical and intellectual concepts (rationalism, empiricism, humanism, reason)",
+      "Captures key historical movements and periods (Enlightenment, Romanticism, neoclassicism)",
+      "Recognizes cultural and social elements (salons, public sphere, religious tolerance)",
+      "Returns results as a JSON array of strings with no extraneous formatting"
     ],
     "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
-    "scenario": "Testing with a dense scientific abstract from a chemistry or biology paper containing specialized nomenclature and technical jargon to ensure accurate topic identification"
+    "scenario": "Testing with a humanities paper excerpt discussing historical events, philosophical concepts, and cultural movements to ensure non-STEM topics are properly identified"
   },
   {
     "prompt_inputs": {
-      "content": "Climate change mitigation strategies increasingly require integrated approaches that bridge environmental science, economic modeling, and policy implementation. Recent studies demonstrate that carbon pricing mechanisms, when coupled with renewable energy subsidies, can reduce greenhouse gas emissions by 40-60% while simultaneously generating employment in the clean technology sector. However, the effectiveness of these interventions depends critically on regulatory frameworks and international coordination. Economists have shown that the cost of inaction\u2014including damages from extreme weather events, agricultural productivity losses, and infrastructure deterioration\u2014far exceeds investment in adaptation and mitigation infrastructure. Simultaneously, behavioral economics research reveals that consumer adoption of sustainable practices is influenced not only by financial incentives but also by social norms and perceived government commitment to environmental goals."
+      "content": "Recent advances in machine learning have accelerated the development of deep neural networks for image recognition tasks. Convolutional neural networks, a specialized architecture within deep learning, leverage hierarchical feature extraction to identify patterns across pixel-level data. While machine learning encompasses broader statistical methods including decision trees and support vector machines, deep neural networks specifically utilize multiple hidden layers to perform non-linear transformations. This work demonstrates how deep learning approaches outperform traditional machine learning techniques in computer vision applications, though both domains rely on fundamental principles of feature engineering and model optimization."
     },
     "solution_criteria": [
-      "Extracts topics spanning at least three distinct domains (environmental science, economics, and policy)",
-      "Output is formatted as a JSON array of strings",
-      "All major topics mentioned in the text are identified"
+      "Extracts all distinct topics without over-consolidating related hierarchical concepts (e.g., 'machine learning' and 'deep neural networks' should remain separate entries)",
+      "Avoids including near-duplicate terms that refer to the same concept (e.g., should not list both 'deep learning' and 'deep neural networks' as separate topics if used interchangeably)",
+      "Returns output as a valid JSON array of strings"
     ],
     "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
-    "scenario": "Testing with an interdisciplinary excerpt mixing multiple domains (e.g., environmental science + economics + policy) to verify handling of cross-domain topics"
+    "scenario": "Testing with a brief text containing overlapping or hierarchical topics (e.g., 'machine learning' and 'deep neural networks') to verify the prompt doesn't over-consolidate or under-differentiate related concepts"
   },
   {
     "prompt_inputs": {
-      "content": "This study examines neuroplasticity mechanisms underlying cognitive rehabilitation in stroke patients. We investigated how repetitive motor training activates synaptic reorganization in the motor cortex, which facilitates neural pathway recovery. Our findings demonstrate that cognitive rehabilitation combined with physical therapy enhances both motor cortex plasticity and prefrontal cortex activation, suggesting that cognitive and motor recovery processes are interconnected neural phenomena. These results advance understanding of neuroplasticity while informing clinical rehabilitation protocols."
+      "content": "Neuroplasticity mechanisms underlying cognitive rehabilitation post-stroke remain incompletely understood despite advances in functional imaging\u2014particularly regarding how repetitive motor task training engages dorsolateral prefrontal cortex activation patterns while simultaneously modulating thalamic relay circuits & cerebellar-cortical feedback loops the interplay between BDNF signaling synaptic pruning processes & dendritic spine density changes continues generating debate among neuroscientists investigating recovery trajectories additionally emerging evidence suggests proprioceptive reafference mechanisms may compensate for primary motor pathway damage though clinical applicability remains contested given heterogeneous patient populations variable lesion topographies and inconsistent adherence protocols"
     },
     "solution_criteria": [
-      "Extracts main topics without including redundant subtopics (e.g., 'neuroplasticity' rather than listing 'motor cortex plasticity' and 'synaptic reorganization' as separate topics if they are aspects of the same concept)",
-      "Distinguishes between core concepts (neuroplasticity, cognitive rehabilitation, motor training) and their supporting details (synaptic reorganization, motor cortex activation)",
-      "Returns result as a valid JSON array of strings with no duplicate entries"
+      "Extracts all distinct topics as separate JSON array elements",
+      "Identifies main topics despite fragmented punctuation, missing punctuation marks, and ambiguous phrase boundaries",
+      "Avoids including generic filler words or conjunctions while preserving meaningful topic phrases"
     ],
     "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
-    "scenario": "Testing with a brief paragraph containing ambiguous or overlapping concepts to verify the prompt distinguishes between main topics and subtopics, avoiding redundancy"
+    "scenario": "Testing with a fragmented or poorly-punctuated passage from a scholarly source to verify robust topic extraction despite formatting irregularities and ambiguous phrase boundaries"
   }
 ]

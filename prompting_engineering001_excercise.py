@@ -654,8 +654,17 @@ def run_prompt(prompt_inputs):
             {prompt_inputs["content"]}
         """
     good_prompt = f"""
-            Extract the topics from the following scholarly article text:
-            {prompt_inputs["content"]}
+        Extract the distinct topics and subtopics explicitly discussed in the scholarly article text below.
+
+        Requirements:
+        - Include every topic or subtopic supported by the text.
+        - Use concise topic phrases, not full sentences.
+        - Do not infer topics that are not stated or clearly discussed.
+        - Return only a valid JSON array of strings, with no Markdown or commentary.
+
+        <article_text>
+        {prompt_inputs["content"]}
+        </article_text>
         """
 
     messages = []

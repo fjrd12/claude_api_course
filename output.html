@@ -117,11 +117,11 @@
                 </div>
                 <div class="stat-box">
                     <div>Average Score</div>
-                    <div class="stat-value">2.2 / 10</div>
+                    <div class="stat-value">8.5 / 10</div>
                 </div>
                 <div class="stat-box">
                     <div>Pass Rate (≥7)</div>
-                    <div class="stat-value">0.0%</div>
+                    <div class="stat-value">75.0%</div>
                 </div>
             </div>
         </div>
@@ -140,128 +140,116 @@
             <tbody>
     
             <tr>
-                <td>Testing with a humanities article containing abstract concepts like philosophy, ethics, and historical movements to verify extraction of non-technical topics</td>
-                <td class="prompt-inputs"><strong>content:</strong> The Enlightenment's emphasis on reason and individual liberty fundamentally reshaped Western political philosophy, challenging medieval hierarchies and establishing the intellectual foundations for modern democracy. Philosophers like Kant and Rousseau grappled with questions of human nature and the social contract, arguing that legitimate authority derives from the consent of the governed rather than divine right. These ideas became catalysts for revolutionary movements across Europe and the Americas, inspiring both constitutional reforms and radical social upheaval. Simultaneously, the period witnessed a reassessment of aesthetic theory, as thinkers moved beyond rigid classicism toward recognizing the validity of subjective emotional experience and artistic expression, laying groundwork for Romanticism's emergence.</td>
-                <td class="criteria">• Extracts all major humanities topics without omissions (e.g., Enlightenment, political philosophy, democracy, social contract, authority, revolution, aesthetic theory)<br>• Returns output as a valid JSON array of strings<br>• Captures both explicit and implicit concepts relevant to the text</td>
-                <td class="output"><pre># Topics Present
-
-1. **The Enlightenment** - Historical period and intellectual movement
-2. **Reason and Individual Liberty** - Core philosophical principles
-3. **Western Political Philosophy** - Disciplinary focus
-4. **Medieval vs. Modern Systems** - Historical comparison
-5. **Democracy** - Political system and concept
-6. **Human Nature** - Philosophical subject
-7. **Social Contract Theory** - Political theory
-8. **Legitimate Authority/Consent of the Governed** - Political concepts
-9. **Divine Right** - Historical concept (contrasted)
-10. **Revolutionary Movements** - Historical events in Europe and the Americas
-11. **Constitutional Reform** - Political change
-12. **Aesthetic Theory** - Philosophy of art and beauty
-13. **Classicism** - Artistic/intellectual tradition
-14. **Subjectivity and Emotional Experience** - Philosophical concepts
-15. **Romanticism** - Intellectual/artistic movement
-
-The passage primarily explores how **Enlightenment philosophy** influenced both **political thought** (democracy, authority, revolution) and **artistic/aesthetic theory** (moving toward Romanticism).</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">While the solution demonstrates excellent content analysis and topic extraction—identifying all major humanities topics without omissions—it fails to meet the mandatory requirement to return output as a valid JSON array of strings. The response is formatted as markdown with explanatory text rather than as pure JSON. The mandatory requirements explicitly state the response should be 'a valid JSON array of strings and nothing else,' which this solution violates by including commentary, formatting, and structural elements outside of JSON. This is an automatic failure of the mandatory requirements regardless of content quality.</td>
+                <td>Testing with a dense neuroscience abstract containing interdisciplinary topics (neurotransmitters, cognitive function, neuroimaging) to verify extraction of technical domain-specific terms</td>
+                <td class="prompt-inputs"><strong>content:</strong> Dopaminergic signaling in the prefrontal cortex plays a critical role in executive function and working memory, processes essential for cognitive control and decision-making. Recent functional magnetic resonance imaging (fMRI) studies have demonstrated that dysregulation of dopamine D1 receptor expression correlates with impaired cognitive flexibility in patients with schizophrenia. Furthermore, positron emission tomography (PET) imaging revealed altered glucose metabolism in the anterior cingulate cortex, suggesting mitochondrial dysfunction and oxidative stress as potential mechanisms underlying the observed neurotransmitter imbalance. These neurochemical aberrations, examined through electrophysiological recordings and microdialysis techniques, highlight the interconnected pathways between monoamine systems and higher-order cognitive processes.</td>
+                <td class="criteria">• Extracts all technical domain-specific neuroscience terms and neuroimaging methodologies mentioned (e.g., dopaminergic signaling, fMRI, PET imaging, dopamine D1 receptor, prefrontal cortex, schizophrenia)<br>• Returns output as a JSON array of strings with no additional fields or explanations<br>• Identifies interdisciplinary topics spanning neurotransmitters, brain anatomy, cognitive functions, and imaging techniques</td>
+                <td class="output"><pre>```json
+[
+  "Dopaminergic signaling",
+  "Prefrontal cortex",
+  "Executive function",
+  "Working memory",
+  "Cognitive control",
+  "Decision-making",
+  "Functional magnetic resonance imaging (fMRI)",
+  "Dopamine D1 receptor expression",
+  "Cognitive flexibility",
+  "Schizophrenia",
+  "Positron emission tomography (PET) imaging",
+  "Glucose metabolism",
+  "Anterior cingulate cortex",
+  "Mitochondrial dysfunction",
+  "Oxidative stress",
+  "Neurotransmitter imbalance",
+  "Electrophysiological recordings",
+  "Microdialysis techniques",
+  "Monoamine systems"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it returns a valid JSON array of strings containing extracted topics with no additional commentary or fields. It exceeds secondary criteria by identifying technical domain-specific terms, neuroimaging methodologies, and interdisciplinary concepts spanning neurotransmitters, anatomy, cognitive functions, and techniques. The extraction is thorough and accurate, covering ~19 distinct topics from the source material. Minor potential omissions exist (e.g., 'higher-order cognitive processes'), but these are marginal given the overall comprehensiveness. The solution directly addresses the task requirements without unnecessary elaboration.</td>
             </tr>
         
             <tr>
-                <td>Testing with a dense scientific abstract from a chemistry or biology paper containing specialized nomenclature and technical jargon to ensure accurate topic identification</td>
-                <td class="prompt-inputs"><strong>content:</strong> This study investigates the photocatalytic degradation of persistent organic pollutants using titanium dioxide nanoparticles synthesized via sol-gel methods. UV-Vis spectroscopy revealed maximum absorption at 385 nm, while X-ray diffraction confirmed the anatase crystal phase with a bandgap energy of 3.2 eV. The mechanism involves hydroxyl radical generation through electron-hole pair formation at the semiconductor-electrolyte interface. Under optimized conditions with pH 6.5 and 500 W halogen lamp irradiation, 87% degradation of bisphenol A was achieved within 90 minutes, with kinetics following pseudo-first-order rate equations. Comparative analysis with commercial P25 catalyst demonstrated superior performance attributed to increased surface area (185 m²/g) and reduced recombination rates via heterostructure coupling with reduced graphene oxide.</td>
-                <td class="criteria">• Extracts all major scientific topics and techniques mentioned (e.g., photocatalysis, titanium dioxide, characterization methods, pollutant degradation)<br>• Identifies specific chemical/material nomenclature as distinct topics (e.g., bisphenol A, anatase, graphene oxide)<br>• Returns results as a valid JSON array of strings with no additional fields or metadata</td>
-                <td class="output"><pre># Topics in This Study
-
-1. **Photocatalysis** - Using light to drive chemical reactions
-2. **Titanium Dioxide (TiO₂) Nanoparticles** - Primary catalytic material
-3. **Sol-Gel Synthesis** - Manufacturing method for the nanoparticles
-4. **Persistent Organic Pollutants (POPs)** - Target contaminants for degradation
-5. **Bisphenol A (BPA)** - Specific pollutant being degraded
-6. **Characterization Techniques**:
-   - UV-Vis Spectroscopy
-   - X-ray Diffraction (XRD)
-7. **Crystal Structure** - Anatase phase
-8. **Bandgap Energy** - 3.2 eV
-9. **Reaction Mechanism** - Hydroxyl radical generation and electron-hole pairs
-10. **Semiconductor-Electrolyte Interface** - Interfacial chemistry
-11. **Process Optimization** - pH and light irradiation parameters
-12. **Kinetics** - Pseudo-first-order rate equations
-13. **Heterostructure Coupling** - TiO₂ with reduced graphene oxide (rGO)
-14. **Catalyst Comparison** - Performance vs. commercial P25
-15. **Surface Area Analysis** - 185 m²/g
-
-**Overall Field:** Environmental remediation/Green chemistry</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">The solution demonstrates excellent content understanding and topic extraction, identifying all major concepts, techniques, materials, and methods from the scholarly article. However, it catastrophically fails the mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the solution provides markdown-formatted text with explanatory descriptions, nested structure under 'Characterization Techniques', and additional metadata sections. The entries themselves often violate the requirement that 'strings should contain a topic without any extra commentary' - for example, '**Photocatalysis** - Using light to drive chemical reactions' includes a definition. A correct response would be: ["Photocatalysis", "Titanium Dioxide Nanoparticles", "Sol-Gel Synthesis", ...] with no additional text, formatting, or structure.</td>
+                <td>Testing with a humanities paper excerpt discussing historical events, philosophical concepts, and cultural movements to ensure non-STEM topics are properly identified</td>
+                <td class="prompt-inputs"><strong>content:</strong> The Enlightenment fundamentally reshaped European intellectual discourse through the convergence of rationalism, empiricism, and humanism. Philosophers such as Voltaire and Diderot challenged ecclesiastical authority and promoted religious tolerance, while simultaneously advancing the ideals of individual liberty and democratic governance. This period witnessed the emergence of the public sphere as a distinct social space where salons and coffeehouses became crucibles for the exchange of ideas. The movement's emphasis on reason and progress catalyzed broader cultural transformations, influencing artistic movements like neoclassicism and Romantic poetry, while establishing the philosophical foundations for revolutionary political upheaval that would reshape the Atlantic world throughout the late eighteenth century.</td>
+                <td class="criteria">• Identifies major philosophical and intellectual concepts (rationalism, empiricism, humanism, reason)<br>• Captures key historical movements and periods (Enlightenment, Romanticism, neoclassicism)<br>• Recognizes cultural and social elements (salons, public sphere, religious tolerance)<br>• Returns results as a JSON array of strings with no extraneous formatting</td>
+                <td class="output"><pre>```json
+[
+  "Enlightenment",
+  "Rationalism",
+  "Empiricism",
+  "Humanism",
+  "Ecclesiastical authority",
+  "Religious tolerance",
+  "Individual liberty",
+  "Democratic governance",
+  "Public sphere",
+  "Salons",
+  "Coffeehouses",
+  "Reason",
+  "Progress",
+  "Neoclassicism",
+  "Romantic poetry",
+  "Revolutionary political upheaval",
+  "Atlantic world"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">10</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It exceeds the secondary criteria by identifying major philosophical concepts, capturing key historical movements and periods, and recognizing cultural and social elements. The extracted topics are well-chosen and represent the substantive content of the passage. Minor debates exist about the granularity of some selections, but the overall extraction is comprehensive and accurate. The solution performs exactly as requested without deficiency.</td>
             </tr>
         
             <tr>
-                <td>Testing with an interdisciplinary excerpt mixing multiple domains (e.g., environmental science + economics + policy) to verify handling of cross-domain topics</td>
-                <td class="prompt-inputs"><strong>content:</strong> Climate change mitigation strategies increasingly require integrated approaches that bridge environmental science, economic modeling, and policy implementation. Recent studies demonstrate that carbon pricing mechanisms, when coupled with renewable energy subsidies, can reduce greenhouse gas emissions by 40-60% while simultaneously generating employment in the clean technology sector. However, the effectiveness of these interventions depends critically on regulatory frameworks and international coordination. Economists have shown that the cost of inaction—including damages from extreme weather events, agricultural productivity losses, and infrastructure deterioration—far exceeds investment in adaptation and mitigation infrastructure. Simultaneously, behavioral economics research reveals that consumer adoption of sustainable practices is influenced not only by financial incentives but also by social norms and perceived government commitment to environmental goals.</td>
-                <td class="criteria">• Extracts topics spanning at least three distinct domains (environmental science, economics, and policy)<br>• Output is formatted as a JSON array of strings<br>• All major topics mentioned in the text are identified</td>
-                <td class="output"><pre># Topics Present in This Text
-
-1. **Climate Change Mitigation Strategies**
-   - Integrated and multidisciplinary approaches
-
-2. **Economic Mechanisms**
-   - Carbon pricing
-   - Renewable energy subsidies
-   - Cost-benefit analysis of inaction vs. investment
-
-3. **Environmental Science**
-   - Greenhouse gas emissions reduction
-   - Climate impacts (extreme weather, agricultural losses, infrastructure damage)
-
-4. **Policy & Regulation**
-   - Regulatory frameworks
-   - International coordination
-   - Government commitment to environmental goals
-
-5. **Clean Technology & Employment**
-   - Job creation in the clean tech sector
-
-6. **Behavioral Economics**
-   - Consumer adoption of sustainable practices
-   - Role of social norms and financial incentives
-
-7. **Adaptation & Infrastructure**
-   - Investment in adaptation infrastructure
-
-**Overall Theme:** The intersection of environmental sustainability, economics, policy, and human behavior in addressing climate change.</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">While the solution excellently identifies topics spanning environmental science, economics, and policy—meeting the secondary criteria—it catastrophically fails the mandatory requirements. The output must be a valid JSON array of strings containing only topic names. Instead, the response is formatted as markdown with hierarchical organization, bullet points, and explanatory text. A correct output would be: ["Climate change mitigation strategies", "Carbon pricing", "Renewable energy subsidies", ...]. The current format is fundamentally incompatible with the stated requirement that the response should be 'a valid JSON array of strings and nothing else.' This is an automatic failure condition.</td>
+                <td>Testing with a brief text containing overlapping or hierarchical topics (e.g., 'machine learning' and 'deep neural networks') to verify the prompt doesn't over-consolidate or under-differentiate related concepts</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in machine learning have accelerated the development of deep neural networks for image recognition tasks. Convolutional neural networks, a specialized architecture within deep learning, leverage hierarchical feature extraction to identify patterns across pixel-level data. While machine learning encompasses broader statistical methods including decision trees and support vector machines, deep neural networks specifically utilize multiple hidden layers to perform non-linear transformations. This work demonstrates how deep learning approaches outperform traditional machine learning techniques in computer vision applications, though both domains rely on fundamental principles of feature engineering and model optimization.</td>
+                <td class="criteria">• Extracts all distinct topics without over-consolidating related hierarchical concepts (e.g., 'machine learning' and 'deep neural networks' should remain separate entries)<br>• Avoids including near-duplicate terms that refer to the same concept (e.g., should not list both 'deep learning' and 'deep neural networks' as separate topics if used interchangeably)<br>• Returns output as a valid JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "Machine learning",
+  "Deep neural networks",
+  "Image recognition",
+  "Convolutional neural networks",
+  "Hierarchical feature extraction",
+  "Deep learning",
+  "Decision trees",
+  "Support vector machines",
+  "Hidden layers",
+  "Non-linear transformations",
+  "Computer vision",
+  "Feature engineering",
+  "Model optimization"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it returns a valid JSON array of strings containing topics without extra commentary. However, it violates a secondary criterion by including both 'Deep learning' and 'Deep neural networks' as separate topics. The text uses these terms interchangeably (e.g., 'deep learning approaches' and 'deep neural networks specifically utilize'), making them near-duplicates that should not both be listed. This is a clear deficiency in the secondary criteria, though the mandatory requirements are satisfied.</td>
             </tr>
         
             <tr>
-                <td>Testing with a brief paragraph containing ambiguous or overlapping concepts to verify the prompt distinguishes between main topics and subtopics, avoiding redundancy</td>
-                <td class="prompt-inputs"><strong>content:</strong> This study examines neuroplasticity mechanisms underlying cognitive rehabilitation in stroke patients. We investigated how repetitive motor training activates synaptic reorganization in the motor cortex, which facilitates neural pathway recovery. Our findings demonstrate that cognitive rehabilitation combined with physical therapy enhances both motor cortex plasticity and prefrontal cortex activation, suggesting that cognitive and motor recovery processes are interconnected neural phenomena. These results advance understanding of neuroplasticity while informing clinical rehabilitation protocols.</td>
-                <td class="criteria">• Extracts main topics without including redundant subtopics (e.g., 'neuroplasticity' rather than listing 'motor cortex plasticity' and 'synaptic reorganization' as separate topics if they are aspects of the same concept)<br>• Distinguishes between core concepts (neuroplasticity, cognitive rehabilitation, motor training) and their supporting details (synaptic reorganization, motor cortex activation)<br>• Returns result as a valid JSON array of strings with no duplicate entries</td>
-                <td class="output"><pre># Topics in This Study
-
-1. **Neuroplasticity** - The brain's ability to reorganize and form new neural connections
-
-2. **Cognitive Rehabilitation** - Therapeutic interventions to restore cognitive function in stroke patients
-
-3. **Stroke Recovery** - Mechanisms of recovery in stroke patients
-
-4. **Motor Training/Physical Therapy** - Repetitive motor exercises as a rehabilitation approach
-
-5. **Synaptic Reorganization** - Changes in synaptic connections and neural pathway recovery
-
-6. **Motor Cortex** - Brain region controlling movement and its plasticity changes
-
-7. **Prefrontal Cortex** - Brain region involved in cognitive functions and its activation patterns
-
-8. **Neural Pathway Recovery** - Restoration of brain's communication networks
-
-9. **Clinical Rehabilitation Protocols** - Practical therapeutic guidelines for patient treatment
-
-10. **Brain Imaging/Neural Mechanisms** - Study of how the brain changes and functions during recovery
-
-**Summary:** The core focus is on how the brain reorganizes itself during stroke recovery through combined cognitive and physical rehabilitation.</pre></td>
-                <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution fails all three mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the provided output is formatted as markdown with section headers, numbered list items, descriptions, and a summary paragraph. While the identified topics themselves are reasonable (neuroplasticity, cognitive rehabilitation, stroke recovery, motor training, synaptic reorganization, motor cortex, prefrontal cortex, neural pathway recovery, clinical rehabilitation protocols), they are embedded in invalid JSON format with extensive commentary. The correct output should be a simple JSON array like: ["Neuroplasticity", "Cognitive Rehabilitation", ...] with no additional text.</td>
+                <td>Testing with a fragmented or poorly-punctuated passage from a scholarly source to verify robust topic extraction despite formatting irregularities and ambiguous phrase boundaries</td>
+                <td class="prompt-inputs"><strong>content:</strong> Neuroplasticity mechanisms underlying cognitive rehabilitation post-stroke remain incompletely understood despite advances in functional imaging—particularly regarding how repetitive motor task training engages dorsolateral prefrontal cortex activation patterns while simultaneously modulating thalamic relay circuits & cerebellar-cortical feedback loops the interplay between BDNF signaling synaptic pruning processes & dendritic spine density changes continues generating debate among neuroscientists investigating recovery trajectories additionally emerging evidence suggests proprioceptive reafference mechanisms may compensate for primary motor pathway damage though clinical applicability remains contested given heterogeneous patient populations variable lesion topographies and inconsistent adherence protocols</td>
+                <td class="criteria">• Extracts all distinct topics as separate JSON array elements<br>• Identifies main topics despite fragmented punctuation, missing punctuation marks, and ambiguous phrase boundaries<br>• Avoids including generic filler words or conjunctions while preserving meaningful topic phrases</td>
+                <td class="output"><pre>```json
+[
+  "Neuroplasticity mechanisms",
+  "Cognitive rehabilitation post-stroke",
+  "Functional imaging",
+  "Repetitive motor task training",
+  "Dorsolateral prefrontal cortex activation patterns",
+  "Thalamic relay circuits",
+  "Cerebellar-cortical feedback loops",
+  "BDNF signaling",
+  "Synaptic pruning processes",
+  "Dendritic spine density changes",
+  "Recovery trajectories",
+  "Proprioceptive reafference mechanisms",
+  "Primary motor pathway damage",
+  "Patient heterogeneity",
+  "Lesion topographies",
+  "Adherence protocols"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it returns a valid JSON array of strings containing topics without commentary. Regarding secondary criteria, it demonstrates strong performance in extracting distinct topics despite difficult source material (fragmented punctuation, run-on sentences, ampersands instead of 'and'). The extraction is comprehensive and accurate for the most part. Minor weaknesses include the inclusion of 'Patient heterogeneity' which reads more as a contextual constraint than a topic proper, and the potential for slightly better topic consolidation or hierarchical representation. However, these are subtle issues that don't significantly detract from the overall quality. The solution captures all major neurobiological mechanisms, clinical applications, and methodological considerations mentioned in the text.</td>
             </tr>
         
             </tbody>
