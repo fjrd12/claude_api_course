@@ -1,0 +1,70 @@
+[
+  {
+    "output": "# Topics Present\n\n1. **The Enlightenment** - Historical period and intellectual movement\n2. **Reason and Individual Liberty** - Core philosophical principles\n3. **Western Political Philosophy** - Disciplinary focus\n4. **Medieval vs. Modern Systems** - Historical comparison\n5. **Democracy** - Political system and concept\n6. **Human Nature** - Philosophical subject\n7. **Social Contract Theory** - Political theory\n8. **Legitimate Authority/Consent of the Governed** - Political concepts\n9. **Divine Right** - Historical concept (contrasted)\n10. **Revolutionary Movements** - Historical events in Europe and the Americas\n11. **Constitutional Reform** - Political change\n12. **Aesthetic Theory** - Philosophy of art and beauty\n13. **Classicism** - Artistic/intellectual tradition\n14. **Subjectivity and Emotional Experience** - Philosophical concepts\n15. **Romanticism** - Intellectual/artistic movement\n\nThe passage primarily explores how **Enlightenment philosophy** influenced both **political thought** (democracy, authority, revolution) and **artistic/aesthetic theory** (moving toward Romanticism).",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The Enlightenment's emphasis on reason and individual liberty fundamentally reshaped Western political philosophy, challenging medieval hierarchies and establishing the intellectual foundations for modern democracy. Philosophers like Kant and Rousseau grappled with questions of human nature and the social contract, arguing that legitimate authority derives from the consent of the governed rather than divine right. These ideas became catalysts for revolutionary movements across Europe and the Americas, inspiring both constitutional reforms and radical social upheaval. Simultaneously, the period witnessed a reassessment of aesthetic theory, as thinkers moved beyond rigid classicism toward recognizing the validity of subjective emotional experience and artistic expression, laying groundwork for Romanticism's emergence."
+      },
+      "solution_criteria": [
+        "Extracts all major humanities topics without omissions (e.g., Enlightenment, political philosophy, democracy, social contract, authority, revolution, aesthetic theory)",
+        "Returns output as a valid JSON array of strings",
+        "Captures both explicit and implicit concepts relevant to the text"
+      ],
+      "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a humanities article containing abstract concepts like philosophy, ethics, and historical movements to verify extraction of non-technical topics"
+    },
+    "score": 2,
+    "reasoning": "While the solution demonstrates excellent content analysis and topic extraction\u2014identifying all major humanities topics without omissions\u2014it fails to meet the mandatory requirement to return output as a valid JSON array of strings. The response is formatted as markdown with explanatory text rather than as pure JSON. The mandatory requirements explicitly state the response should be 'a valid JSON array of strings and nothing else,' which this solution violates by including commentary, formatting, and structural elements outside of JSON. This is an automatic failure of the mandatory requirements regardless of content quality."
+  },
+  {
+    "output": "# Topics in This Study\n\n1. **Photocatalysis** - Using light to drive chemical reactions\n2. **Titanium Dioxide (TiO\u2082) Nanoparticles** - Primary catalytic material\n3. **Sol-Gel Synthesis** - Manufacturing method for the nanoparticles\n4. **Persistent Organic Pollutants (POPs)** - Target contaminants for degradation\n5. **Bisphenol A (BPA)** - Specific pollutant being degraded\n6. **Characterization Techniques**:\n   - UV-Vis Spectroscopy\n   - X-ray Diffraction (XRD)\n7. **Crystal Structure** - Anatase phase\n8. **Bandgap Energy** - 3.2 eV\n9. **Reaction Mechanism** - Hydroxyl radical generation and electron-hole pairs\n10. **Semiconductor-Electrolyte Interface** - Interfacial chemistry\n11. **Process Optimization** - pH and light irradiation parameters\n12. **Kinetics** - Pseudo-first-order rate equations\n13. **Heterostructure Coupling** - TiO\u2082 with reduced graphene oxide (rGO)\n14. **Catalyst Comparison** - Performance vs. commercial P25\n15. **Surface Area Analysis** - 185 m\u00b2/g\n\n**Overall Field:** Environmental remediation/Green chemistry",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "This study investigates the photocatalytic degradation of persistent organic pollutants using titanium dioxide nanoparticles synthesized via sol-gel methods. UV-Vis spectroscopy revealed maximum absorption at 385 nm, while X-ray diffraction confirmed the anatase crystal phase with a bandgap energy of 3.2 eV. The mechanism involves hydroxyl radical generation through electron-hole pair formation at the semiconductor-electrolyte interface. Under optimized conditions with pH 6.5 and 500 W halogen lamp irradiation, 87% degradation of bisphenol A was achieved within 90 minutes, with kinetics following pseudo-first-order rate equations. Comparative analysis with commercial P25 catalyst demonstrated superior performance attributed to increased surface area (185 m\u00b2/g) and reduced recombination rates via heterostructure coupling with reduced graphene oxide."
+      },
+      "solution_criteria": [
+        "Extracts all major scientific topics and techniques mentioned (e.g., photocatalysis, titanium dioxide, characterization methods, pollutant degradation)",
+        "Identifies specific chemical/material nomenclature as distinct topics (e.g., bisphenol A, anatase, graphene oxide)",
+        "Returns results as a valid JSON array of strings with no additional fields or metadata"
+      ],
+      "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a dense scientific abstract from a chemistry or biology paper containing specialized nomenclature and technical jargon to ensure accurate topic identification"
+    },
+    "score": 2,
+    "reasoning": "The solution demonstrates excellent content understanding and topic extraction, identifying all major concepts, techniques, materials, and methods from the scholarly article. However, it catastrophically fails the mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the solution provides markdown-formatted text with explanatory descriptions, nested structure under 'Characterization Techniques', and additional metadata sections. The entries themselves often violate the requirement that 'strings should contain a topic without any extra commentary' - for example, '**Photocatalysis** - Using light to drive chemical reactions' includes a definition. A correct response would be: [\"Photocatalysis\", \"Titanium Dioxide Nanoparticles\", \"Sol-Gel Synthesis\", ...] with no additional text, formatting, or structure."
+  },
+  {
+    "output": "# Topics Present in This Text\n\n1. **Climate Change Mitigation Strategies**\n   - Integrated and multidisciplinary approaches\n\n2. **Economic Mechanisms**\n   - Carbon pricing\n   - Renewable energy subsidies\n   - Cost-benefit analysis of inaction vs. investment\n\n3. **Environmental Science**\n   - Greenhouse gas emissions reduction\n   - Climate impacts (extreme weather, agricultural losses, infrastructure damage)\n\n4. **Policy & Regulation**\n   - Regulatory frameworks\n   - International coordination\n   - Government commitment to environmental goals\n\n5. **Clean Technology & Employment**\n   - Job creation in the clean tech sector\n\n6. **Behavioral Economics**\n   - Consumer adoption of sustainable practices\n   - Role of social norms and financial incentives\n\n7. **Adaptation & Infrastructure**\n   - Investment in adaptation infrastructure\n\n**Overall Theme:** The intersection of environmental sustainability, economics, policy, and human behavior in addressing climate change.",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Climate change mitigation strategies increasingly require integrated approaches that bridge environmental science, economic modeling, and policy implementation. Recent studies demonstrate that carbon pricing mechanisms, when coupled with renewable energy subsidies, can reduce greenhouse gas emissions by 40-60% while simultaneously generating employment in the clean technology sector. However, the effectiveness of these interventions depends critically on regulatory frameworks and international coordination. Economists have shown that the cost of inaction\u2014including damages from extreme weather events, agricultural productivity losses, and infrastructure deterioration\u2014far exceeds investment in adaptation and mitigation infrastructure. Simultaneously, behavioral economics research reveals that consumer adoption of sustainable practices is influenced not only by financial incentives but also by social norms and perceived government commitment to environmental goals."
+      },
+      "solution_criteria": [
+        "Extracts topics spanning at least three distinct domains (environmental science, economics, and policy)",
+        "Output is formatted as a JSON array of strings",
+        "All major topics mentioned in the text are identified"
+      ],
+      "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with an interdisciplinary excerpt mixing multiple domains (e.g., environmental science + economics + policy) to verify handling of cross-domain topics"
+    },
+    "score": 2,
+    "reasoning": "While the solution excellently identifies topics spanning environmental science, economics, and policy\u2014meeting the secondary criteria\u2014it catastrophically fails the mandatory requirements. The output must be a valid JSON array of strings containing only topic names. Instead, the response is formatted as markdown with hierarchical organization, bullet points, and explanatory text. A correct output would be: [\"Climate change mitigation strategies\", \"Carbon pricing\", \"Renewable energy subsidies\", ...]. The current format is fundamentally incompatible with the stated requirement that the response should be 'a valid JSON array of strings and nothing else.' This is an automatic failure condition."
+  },
+  {
+    "output": "# Topics in This Study\n\n1. **Neuroplasticity** - The brain's ability to reorganize and form new neural connections\n\n2. **Cognitive Rehabilitation** - Therapeutic interventions to restore cognitive function in stroke patients\n\n3. **Stroke Recovery** - Mechanisms of recovery in stroke patients\n\n4. **Motor Training/Physical Therapy** - Repetitive motor exercises as a rehabilitation approach\n\n5. **Synaptic Reorganization** - Changes in synaptic connections and neural pathway recovery\n\n6. **Motor Cortex** - Brain region controlling movement and its plasticity changes\n\n7. **Prefrontal Cortex** - Brain region involved in cognitive functions and its activation patterns\n\n8. **Neural Pathway Recovery** - Restoration of brain's communication networks\n\n9. **Clinical Rehabilitation Protocols** - Practical therapeutic guidelines for patient treatment\n\n10. **Brain Imaging/Neural Mechanisms** - Study of how the brain changes and functions during recovery\n\n**Summary:** The core focus is on how the brain reorganizes itself during stroke recovery through combined cognitive and physical rehabilitation.",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "This study examines neuroplasticity mechanisms underlying cognitive rehabilitation in stroke patients. We investigated how repetitive motor training activates synaptic reorganization in the motor cortex, which facilitates neural pathway recovery. Our findings demonstrate that cognitive rehabilitation combined with physical therapy enhances both motor cortex plasticity and prefrontal cortex activation, suggesting that cognitive and motor recovery processes are interconnected neural phenomena. These results advance understanding of neuroplasticity while informing clinical rehabilitation protocols."
+      },
+      "solution_criteria": [
+        "Extracts main topics without including redundant subtopics (e.g., 'neuroplasticity' rather than listing 'motor cortex plasticity' and 'synaptic reorganization' as separate topics if they are aspects of the same concept)",
+        "Distinguishes between core concepts (neuroplasticity, cognitive rehabilitation, motor training) and their supporting details (synaptic reorganization, motor cortex activation)",
+        "Returns result as a valid JSON array of strings with no duplicate entries"
+      ],
+      "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a brief paragraph containing ambiguous or overlapping concepts to verify the prompt distinguishes between main topics and subtopics, avoiding redundancy"
+    },
+    "score": 3,
+    "reasoning": "The solution fails all three mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the provided output is formatted as markdown with section headers, numbered list items, descriptions, and a summary paragraph. While the identified topics themselves are reasonable (neuroplasticity, cognitive rehabilitation, stroke recovery, motor training, synaptic reorganization, motor cortex, prefrontal cortex, neural pathway recovery, clinical rehabilitation protocols), they are embedded in invalid JSON format with extensive commentary. The correct output should be a simple JSON array like: [\"Neuroplasticity\", \"Cognitive Rehabilitation\", ...] with no additional text."
+  }
+]

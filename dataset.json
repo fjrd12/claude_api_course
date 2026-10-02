@@ -1,14 +1,50 @@
 [
   {
-    "task": "Parse an AWS S3 bucket name from an S3 URI in the format 's3://bucket-name/key/path' and extract just the bucket name",
-    "format": "regex"
+    "prompt_inputs": {
+      "content": "The Enlightenment's emphasis on reason and individual liberty fundamentally reshaped Western political philosophy, challenging medieval hierarchies and establishing the intellectual foundations for modern democracy. Philosophers like Kant and Rousseau grappled with questions of human nature and the social contract, arguing that legitimate authority derives from the consent of the governed rather than divine right. These ideas became catalysts for revolutionary movements across Europe and the Americas, inspiring both constitutional reforms and radical social upheaval. Simultaneously, the period witnessed a reassessment of aesthetic theory, as thinkers moved beyond rigid classicism toward recognizing the validity of subjective emotional experience and artistic expression, laying groundwork for Romanticism's emergence."
+    },
+    "solution_criteria": [
+      "Extracts all major humanities topics without omissions (e.g., Enlightenment, political philosophy, democracy, social contract, authority, revolution, aesthetic theory)",
+      "Returns output as a valid JSON array of strings",
+      "Captures both explicit and implicit concepts relevant to the text"
+    ],
+    "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a humanities article containing abstract concepts like philosophy, ethics, and historical movements to verify extraction of non-technical topics"
   },
   {
-    "task": "Create a JSON policy document that allows read-only access to a specific AWS S3 bucket",
-    "format": "json"
+    "prompt_inputs": {
+      "content": "This study investigates the photocatalytic degradation of persistent organic pollutants using titanium dioxide nanoparticles synthesized via sol-gel methods. UV-Vis spectroscopy revealed maximum absorption at 385 nm, while X-ray diffraction confirmed the anatase crystal phase with a bandgap energy of 3.2 eV. The mechanism involves hydroxyl radical generation through electron-hole pair formation at the semiconductor-electrolyte interface. Under optimized conditions with pH 6.5 and 500 W halogen lamp irradiation, 87% degradation of bisphenol A was achieved within 90 minutes, with kinetics following pseudo-first-order rate equations. Comparative analysis with commercial P25 catalyst demonstrated superior performance attributed to increased surface area (185 m\u00b2/g) and reduced recombination rates via heterostructure coupling with reduced graphene oxide."
+    },
+    "solution_criteria": [
+      "Extracts all major scientific topics and techniques mentioned (e.g., photocatalysis, titanium dioxide, characterization methods, pollutant degradation)",
+      "Identifies specific chemical/material nomenclature as distinct topics (e.g., bisphenol A, anatase, graphene oxide)",
+      "Returns results as a valid JSON array of strings with no additional fields or metadata"
+    ],
+    "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a dense scientific abstract from a chemistry or biology paper containing specialized nomenclature and technical jargon to ensure accurate topic identification"
   },
   {
-    "task": "Write a Python function that takes an AWS CloudWatch log timestamp string and converts it to a human-readable date format",
-    "format": "python"
+    "prompt_inputs": {
+      "content": "Climate change mitigation strategies increasingly require integrated approaches that bridge environmental science, economic modeling, and policy implementation. Recent studies demonstrate that carbon pricing mechanisms, when coupled with renewable energy subsidies, can reduce greenhouse gas emissions by 40-60% while simultaneously generating employment in the clean technology sector. However, the effectiveness of these interventions depends critically on regulatory frameworks and international coordination. Economists have shown that the cost of inaction\u2014including damages from extreme weather events, agricultural productivity losses, and infrastructure deterioration\u2014far exceeds investment in adaptation and mitigation infrastructure. Simultaneously, behavioral economics research reveals that consumer adoption of sustainable practices is influenced not only by financial incentives but also by social norms and perceived government commitment to environmental goals."
+    },
+    "solution_criteria": [
+      "Extracts topics spanning at least three distinct domains (environmental science, economics, and policy)",
+      "Output is formatted as a JSON array of strings",
+      "All major topics mentioned in the text are identified"
+    ],
+    "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with an interdisciplinary excerpt mixing multiple domains (e.g., environmental science + economics + policy) to verify handling of cross-domain topics"
+  },
+  {
+    "prompt_inputs": {
+      "content": "This study examines neuroplasticity mechanisms underlying cognitive rehabilitation in stroke patients. We investigated how repetitive motor training activates synaptic reorganization in the motor cortex, which facilitates neural pathway recovery. Our findings demonstrate that cognitive rehabilitation combined with physical therapy enhances both motor cortex plasticity and prefrontal cortex activation, suggesting that cognitive and motor recovery processes are interconnected neural phenomena. These results advance understanding of neuroplasticity while informing clinical rehabilitation protocols."
+    },
+    "solution_criteria": [
+      "Extracts main topics without including redundant subtopics (e.g., 'neuroplasticity' rather than listing 'motor cortex plasticity' and 'synaptic reorganization' as separate topics if they are aspects of the same concept)",
+      "Distinguishes between core concepts (neuroplasticity, cognitive rehabilitation, motor training) and their supporting details (synaptic reorganization, motor cortex activation)",
+      "Returns result as a valid JSON array of strings with no duplicate entries"
+    ],
+    "task_description": "\n    Extract topics out of a message of text from a scholarly article into a JSON array of strings\n    ",
+    "scenario": "Testing with a brief paragraph containing ambiguous or overlapping concepts to verify the prompt distinguishes between main topics and subtopics, avoiding redundancy"
   }
 ]

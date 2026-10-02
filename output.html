@@ -1,0 +1,271 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">4</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">2.2 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">0.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a humanities article containing abstract concepts like philosophy, ethics, and historical movements to verify extraction of non-technical topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> The Enlightenment's emphasis on reason and individual liberty fundamentally reshaped Western political philosophy, challenging medieval hierarchies and establishing the intellectual foundations for modern democracy. Philosophers like Kant and Rousseau grappled with questions of human nature and the social contract, arguing that legitimate authority derives from the consent of the governed rather than divine right. These ideas became catalysts for revolutionary movements across Europe and the Americas, inspiring both constitutional reforms and radical social upheaval. Simultaneously, the period witnessed a reassessment of aesthetic theory, as thinkers moved beyond rigid classicism toward recognizing the validity of subjective emotional experience and artistic expression, laying groundwork for Romanticism's emergence.</td>
+                <td class="criteria">• Extracts all major humanities topics without omissions (e.g., Enlightenment, political philosophy, democracy, social contract, authority, revolution, aesthetic theory)<br>• Returns output as a valid JSON array of strings<br>• Captures both explicit and implicit concepts relevant to the text</td>
+                <td class="output"><pre># Topics Present
+
+1. **The Enlightenment** - Historical period and intellectual movement
+2. **Reason and Individual Liberty** - Core philosophical principles
+3. **Western Political Philosophy** - Disciplinary focus
+4. **Medieval vs. Modern Systems** - Historical comparison
+5. **Democracy** - Political system and concept
+6. **Human Nature** - Philosophical subject
+7. **Social Contract Theory** - Political theory
+8. **Legitimate Authority/Consent of the Governed** - Political concepts
+9. **Divine Right** - Historical concept (contrasted)
+10. **Revolutionary Movements** - Historical events in Europe and the Americas
+11. **Constitutional Reform** - Political change
+12. **Aesthetic Theory** - Philosophy of art and beauty
+13. **Classicism** - Artistic/intellectual tradition
+14. **Subjectivity and Emotional Experience** - Philosophical concepts
+15. **Romanticism** - Intellectual/artistic movement
+
+The passage primarily explores how **Enlightenment philosophy** influenced both **political thought** (democracy, authority, revolution) and **artistic/aesthetic theory** (moving toward Romanticism).</pre></td>
+                <td class="score-col"><span class="score score-low">2</span></td>
+                <td class="reasoning">While the solution demonstrates excellent content analysis and topic extraction—identifying all major humanities topics without omissions—it fails to meet the mandatory requirement to return output as a valid JSON array of strings. The response is formatted as markdown with explanatory text rather than as pure JSON. The mandatory requirements explicitly state the response should be 'a valid JSON array of strings and nothing else,' which this solution violates by including commentary, formatting, and structural elements outside of JSON. This is an automatic failure of the mandatory requirements regardless of content quality.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a dense scientific abstract from a chemistry or biology paper containing specialized nomenclature and technical jargon to ensure accurate topic identification</td>
+                <td class="prompt-inputs"><strong>content:</strong> This study investigates the photocatalytic degradation of persistent organic pollutants using titanium dioxide nanoparticles synthesized via sol-gel methods. UV-Vis spectroscopy revealed maximum absorption at 385 nm, while X-ray diffraction confirmed the anatase crystal phase with a bandgap energy of 3.2 eV. The mechanism involves hydroxyl radical generation through electron-hole pair formation at the semiconductor-electrolyte interface. Under optimized conditions with pH 6.5 and 500 W halogen lamp irradiation, 87% degradation of bisphenol A was achieved within 90 minutes, with kinetics following pseudo-first-order rate equations. Comparative analysis with commercial P25 catalyst demonstrated superior performance attributed to increased surface area (185 m²/g) and reduced recombination rates via heterostructure coupling with reduced graphene oxide.</td>
+                <td class="criteria">• Extracts all major scientific topics and techniques mentioned (e.g., photocatalysis, titanium dioxide, characterization methods, pollutant degradation)<br>• Identifies specific chemical/material nomenclature as distinct topics (e.g., bisphenol A, anatase, graphene oxide)<br>• Returns results as a valid JSON array of strings with no additional fields or metadata</td>
+                <td class="output"><pre># Topics in This Study
+
+1. **Photocatalysis** - Using light to drive chemical reactions
+2. **Titanium Dioxide (TiO₂) Nanoparticles** - Primary catalytic material
+3. **Sol-Gel Synthesis** - Manufacturing method for the nanoparticles
+4. **Persistent Organic Pollutants (POPs)** - Target contaminants for degradation
+5. **Bisphenol A (BPA)** - Specific pollutant being degraded
+6. **Characterization Techniques**:
+   - UV-Vis Spectroscopy
+   - X-ray Diffraction (XRD)
+7. **Crystal Structure** - Anatase phase
+8. **Bandgap Energy** - 3.2 eV
+9. **Reaction Mechanism** - Hydroxyl radical generation and electron-hole pairs
+10. **Semiconductor-Electrolyte Interface** - Interfacial chemistry
+11. **Process Optimization** - pH and light irradiation parameters
+12. **Kinetics** - Pseudo-first-order rate equations
+13. **Heterostructure Coupling** - TiO₂ with reduced graphene oxide (rGO)
+14. **Catalyst Comparison** - Performance vs. commercial P25
+15. **Surface Area Analysis** - 185 m²/g
+
+**Overall Field:** Environmental remediation/Green chemistry</pre></td>
+                <td class="score-col"><span class="score score-low">2</span></td>
+                <td class="reasoning">The solution demonstrates excellent content understanding and topic extraction, identifying all major concepts, techniques, materials, and methods from the scholarly article. However, it catastrophically fails the mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the solution provides markdown-formatted text with explanatory descriptions, nested structure under 'Characterization Techniques', and additional metadata sections. The entries themselves often violate the requirement that 'strings should contain a topic without any extra commentary' - for example, '**Photocatalysis** - Using light to drive chemical reactions' includes a definition. A correct response would be: ["Photocatalysis", "Titanium Dioxide Nanoparticles", "Sol-Gel Synthesis", ...] with no additional text, formatting, or structure.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with an interdisciplinary excerpt mixing multiple domains (e.g., environmental science + economics + policy) to verify handling of cross-domain topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> Climate change mitigation strategies increasingly require integrated approaches that bridge environmental science, economic modeling, and policy implementation. Recent studies demonstrate that carbon pricing mechanisms, when coupled with renewable energy subsidies, can reduce greenhouse gas emissions by 40-60% while simultaneously generating employment in the clean technology sector. However, the effectiveness of these interventions depends critically on regulatory frameworks and international coordination. Economists have shown that the cost of inaction—including damages from extreme weather events, agricultural productivity losses, and infrastructure deterioration—far exceeds investment in adaptation and mitigation infrastructure. Simultaneously, behavioral economics research reveals that consumer adoption of sustainable practices is influenced not only by financial incentives but also by social norms and perceived government commitment to environmental goals.</td>
+                <td class="criteria">• Extracts topics spanning at least three distinct domains (environmental science, economics, and policy)<br>• Output is formatted as a JSON array of strings<br>• All major topics mentioned in the text are identified</td>
+                <td class="output"><pre># Topics Present in This Text
+
+1. **Climate Change Mitigation Strategies**
+   - Integrated and multidisciplinary approaches
+
+2. **Economic Mechanisms**
+   - Carbon pricing
+   - Renewable energy subsidies
+   - Cost-benefit analysis of inaction vs. investment
+
+3. **Environmental Science**
+   - Greenhouse gas emissions reduction
+   - Climate impacts (extreme weather, agricultural losses, infrastructure damage)
+
+4. **Policy & Regulation**
+   - Regulatory frameworks
+   - International coordination
+   - Government commitment to environmental goals
+
+5. **Clean Technology & Employment**
+   - Job creation in the clean tech sector
+
+6. **Behavioral Economics**
+   - Consumer adoption of sustainable practices
+   - Role of social norms and financial incentives
+
+7. **Adaptation & Infrastructure**
+   - Investment in adaptation infrastructure
+
+**Overall Theme:** The intersection of environmental sustainability, economics, policy, and human behavior in addressing climate change.</pre></td>
+                <td class="score-col"><span class="score score-low">2</span></td>
+                <td class="reasoning">While the solution excellently identifies topics spanning environmental science, economics, and policy—meeting the secondary criteria—it catastrophically fails the mandatory requirements. The output must be a valid JSON array of strings containing only topic names. Instead, the response is formatted as markdown with hierarchical organization, bullet points, and explanatory text. A correct output would be: ["Climate change mitigation strategies", "Carbon pricing", "Renewable energy subsidies", ...]. The current format is fundamentally incompatible with the stated requirement that the response should be 'a valid JSON array of strings and nothing else.' This is an automatic failure condition.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a brief paragraph containing ambiguous or overlapping concepts to verify the prompt distinguishes between main topics and subtopics, avoiding redundancy</td>
+                <td class="prompt-inputs"><strong>content:</strong> This study examines neuroplasticity mechanisms underlying cognitive rehabilitation in stroke patients. We investigated how repetitive motor training activates synaptic reorganization in the motor cortex, which facilitates neural pathway recovery. Our findings demonstrate that cognitive rehabilitation combined with physical therapy enhances both motor cortex plasticity and prefrontal cortex activation, suggesting that cognitive and motor recovery processes are interconnected neural phenomena. These results advance understanding of neuroplasticity while informing clinical rehabilitation protocols.</td>
+                <td class="criteria">• Extracts main topics without including redundant subtopics (e.g., 'neuroplasticity' rather than listing 'motor cortex plasticity' and 'synaptic reorganization' as separate topics if they are aspects of the same concept)<br>• Distinguishes between core concepts (neuroplasticity, cognitive rehabilitation, motor training) and their supporting details (synaptic reorganization, motor cortex activation)<br>• Returns result as a valid JSON array of strings with no duplicate entries</td>
+                <td class="output"><pre># Topics in This Study
+
+1. **Neuroplasticity** - The brain's ability to reorganize and form new neural connections
+
+2. **Cognitive Rehabilitation** - Therapeutic interventions to restore cognitive function in stroke patients
+
+3. **Stroke Recovery** - Mechanisms of recovery in stroke patients
+
+4. **Motor Training/Physical Therapy** - Repetitive motor exercises as a rehabilitation approach
+
+5. **Synaptic Reorganization** - Changes in synaptic connections and neural pathway recovery
+
+6. **Motor Cortex** - Brain region controlling movement and its plasticity changes
+
+7. **Prefrontal Cortex** - Brain region involved in cognitive functions and its activation patterns
+
+8. **Neural Pathway Recovery** - Restoration of brain's communication networks
+
+9. **Clinical Rehabilitation Protocols** - Practical therapeutic guidelines for patient treatment
+
+10. **Brain Imaging/Neural Mechanisms** - Study of how the brain changes and functions during recovery
+
+**Summary:** The core focus is on how the brain reorganizes itself during stroke recovery through combined cognitive and physical rehabilitation.</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">The solution fails all three mandatory requirements. The task explicitly requires 'a valid JSON array of strings and nothing else,' but the provided output is formatted as markdown with section headers, numbered list items, descriptions, and a summary paragraph. While the identified topics themselves are reasonable (neuroplasticity, cognitive rehabilitation, stroke recovery, motor training, synaptic reorganization, motor cortex, prefrontal cortex, neural pathway recovery, clinical rehabilitation protocols), they are embedded in invalid JSON format with extensive commentary. The correct output should be a simple JSON array like: ["Neuroplasticity", "Cognitive Rehabilitation", ...] with no additional text.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
