@@ -77,9 +77,12 @@ python 002_tools_schema.py
 python 003_tools_handling_shcema_messages.py
 python 004_tools_get_tools_responses.py
 python "005_tools:muliturn.py"
+python 009_web_search.py
 ```
 
 These examples progressively demonstrate defining tools, publishing schemas, handling tool-use messages, returning tool results, and running a multi-turn tool loop.
+
+`009_web_search.py` uses Anthropic's built-in `web_search` tool. It searches for an answer to the configured user question and prints the complete API response. Update the question or the `allowed_domains` list in the script to change the search behavior.
 
 ## Troubleshooting
 
