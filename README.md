@@ -132,6 +132,37 @@ These examples progressively demonstrate defining tools, publishing schemas, han
 
 `009_web_search.py` uses Anthropic's built-in `web_search` tool. It searches for an answer to the configured user question and prints the complete API response. Update the question or the `allowed_domains` list in the script to change the search behavior.
 
+## MCP CLI Project
+
+The `cli_project_COMPLETE/` folder contains a completed MCP-enabled command-line chat application. It includes an MCP document server, an MCP client, and interactive chat commands that use document tools and prompts.
+
+Install its dependencies from the repository root:
+
+```bash
+cd cli_project_COMPLETE
+../venv/bin/python -m pip install -e .
+```
+
+Run the chat application:
+
+```bash
+../venv/bin/python main.py
+```
+
+Test the document MCP server with the MCP Inspector:
+
+```bash
+../venv/bin/mcp dev mcp_server.py
+```
+
+Open the local Inspector URL printed by the command, then select **Connect**. You can test:
+
+- Tools: `read_doc_contents`, `edit_document`
+- Resources: `docs://documents`, `docs://documents/{doc_id}`
+- Prompts: `format`, `summarize`
+
+For example, call `read_doc_contents` with `{"doc_id": "plan.md"}`. The completed project uses MCP v1 APIs, so use its Python 3.11 environment rather than `uv run --with mcp`, which can select Python 3.14 and fail while building dependencies.
+
 ## Troubleshooting
 
 - `AuthenticationError`: confirm `ANTHROPIC_API_KEY` is present in `.env` and restart the command.
